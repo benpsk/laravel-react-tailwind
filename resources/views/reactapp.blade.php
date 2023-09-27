@@ -5,22 +5,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>React App</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-@viteReactRefresh
-@vite('resources/js/app.jsx')
+    @viteReactRefresh
+    @vite('resources/js/app.jsx')
 </head>
 
-<body>
-<div id="something">
-        <main class="">
-            @yield('content')
-        </main>
-    </div>
+<body class="antialiased">
+    <!-- React DOM Node -->
+    <div id="app"></div>
 </body>
 
 </html>

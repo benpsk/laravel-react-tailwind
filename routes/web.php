@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return redirect('/welcome');
+});
+
+Route::get('/welcome', function () {
     $data = ['one', 'two', 'three'];
     return view('welcome', compact('data'));
 });
+
+Route::view('/react/{path?}', 'reactapp')
+    ->where('path', '.*');

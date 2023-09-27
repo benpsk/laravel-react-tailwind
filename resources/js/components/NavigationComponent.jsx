@@ -1,4 +1,4 @@
-export default function NavigationComponent({ name, age }) {
+export function NavigationComponent({ name, age }) {
     return (
         <div>
             <h1>Hello, {name}!</h1>
