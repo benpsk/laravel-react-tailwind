@@ -22,5 +22,5 @@ Route::get('/welcome', function () {
     return view('welcome', compact('data'));
 });
 
-Route::view('/react/{path?}', 'reactapp')
+Route::view('/react/{path?}', 'reactApp')
     ->where('path', '.*');

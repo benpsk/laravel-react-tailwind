@@ -10,11 +10,39 @@ import { createRoot } from 'react-dom/client';
 
 
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import {Routes, Route, Link, createBrowserRouter, RouterProvider, } from "react-router-dom";
+
+import ErrorPage from "./error-page";
 
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import {NavigationComponent} from './components/NavigationComponent';
+
+const router = createBrowserRouter([
+    {
+        path: "/react/home",
+        element: <Home />,
+        errorElement: <ErrorPage />,
+    },
+    {
+        path: "/react/about",
+        element: <About />,
+        errorElement: <ErrorPage />,
+
+    },
+    {
+        path: "/react/contact",
+        element: <Contact />,
+        errorElement: <ErrorPage />,
+
+    },
+    {
+        path: "/react/navigation",
+        element: <NavigationComponent />,
+    }
+
+]);
 
 function MyApp() {
     return (
@@ -23,7 +51,7 @@ function MyApp() {
             <div className="collapse navbar-collapse" id="navbarText">
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item active">
-                        <Link to="/react" className="nav-link">Home</Link>
+                        <Link to="/react/home" className="nav-link">Home</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/react/about">About</Link>
@@ -33,11 +61,6 @@ function MyApp() {
                     </li>
                 </ul>
             </div>
-            <Routes>
-                <Route path="/react" element={<Home /> } />
-                <Route path="/react/about" element={<About /> } />
-                <Route path="/react/contact" element={<Contact /> } />
-            </Routes>
         </div>
             
     );
@@ -46,7 +69,20 @@ function MyApp() {
 const domNode = document.getElementById('app');
 if (domNode) {
     const root = createRoot(domNode);
-    root.render(<BrowserRouter>
-                <MyApp />
-    </BrowserRouter>);
-        }
+    root.render(<React.StrictMode>
+        <RouterProvider router={router} />
+  </React.StrictMode>);
+}
+
+const navigationNode = document.getElementById('navigation');
+if (navigationNode) {
+    const navigationRoot = createRoot(navigationNode);
+    navigationRoot.render(
+        <RouterProvider router={router} >
+            <NavigationComponent name={data.name} age={data.age} />
+        </RouterProvider>
+    
+    );
+}
+        
+        
