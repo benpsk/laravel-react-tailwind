@@ -29,20 +29,28 @@ const router = createBrowserRouter([
         path: "/react/about",
         element: <About />,
         errorElement: <ErrorPage />,
-
     },
     {
         path: "/react/contact",
         element: <Contact />,
         errorElement: <ErrorPage />,
-
     },
     {
         path: "/react/navigation",
         element: <NavigationComponent />,
+    },
+    {
+        path: "*",
+        element: <DefaultComponent />,
     }
-
 ]);
+
+function DefaultComponent() {
+  return (
+    <>
+    </>
+  );
+}
 
 function MyApp() {
     return (
@@ -66,7 +74,9 @@ function MyApp() {
     );
 }
 
-const domNode = document.getElementById('app');
+const domNode = document.getElementById('reactApp');
+
+console.log(domNode);
 if (domNode) {
     const root = createRoot(domNode);
     root.render(<React.StrictMode>
@@ -74,15 +84,15 @@ if (domNode) {
   </React.StrictMode>);
 }
 
-const navigationNode = document.getElementById('navigation');
-if (navigationNode) {
-    const navigationRoot = createRoot(navigationNode);
-    navigationRoot.render(
-        <RouterProvider router={router} >
-            <NavigationComponent name={data.name} age={data.age} />
-        </RouterProvider>
+// const navigationNode = document.getElementById('navigation');
+// if (navigationNode) {
+//     const navigationRoot = createRoot(navigationNode);
+//     navigationRoot.render(
+//         <RouterProvider router={router} >
+//             <NavigationComponent name={data.name} age={data.age} />
+//         </RouterProvider>
     
-    );
-}
+//     );
+// }
         
         

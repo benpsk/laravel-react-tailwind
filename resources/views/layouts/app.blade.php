@@ -17,7 +17,9 @@
 
 <body>
 <div id="something">
-        <main class="">
+<h1>Hello MF</h1>
+<a href="{{ url('react/navigation')}}">Go to Navigation Component</a>
+<main id="reactApp">
             @yield('content')
         </main>
     </div>
